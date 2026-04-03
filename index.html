@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Counselling Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <div class="hero__brand">
+        <img src="logo.png" alt="Bal Vidya Mandir logo" class="hero__logo">
+      </div>
+      <p class="hero__tag">Bal Vidya Mandir</p>
+      <h1>Student Counselling Portal</h1>
+      <p class="hero__text">
+        Record counselling details, save them to Google Sheets, and quickly search records by class.
+      </p>
+      <div class="hero__actions">
+        <a href="records.html" class="button-link">Open Records Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="section-heading">
+        <h2>Counselling Form</h2>
+        <p>Fill in all fields before submitting.</p>
+      </div>
+
+      <form id="counsellingForm" class="form-grid" novalidate>
+        <div class="form-group">
+          <label for="studentName">Student Name</label>
+          <input type="text" id="studentName" name="studentName" placeholder="Enter student name">
+          <small class="error" id="studentNameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="studentClass">Class</label>
+          <select id="studentClass" name="studentClass">
+            <option value="">Select class</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <small class="error" id="studentClassError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="section">Section</label>
+          <input type="text" id="section" name="section" placeholder="Enter section">
+          <small class="error" id="sectionError"></small>
+        </div>
+
+        <div class="form-group form-group--full">
+          <label for="concern">Concern</label>
+          <textarea id="concern" name="concern" rows="4" placeholder="Describe the counselling concern"></textarea>
+          <small class="error" id="concernError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="counsellingDate">Counselling Date</label>
+          <input type="date" id="counsellingDate" name="counsellingDate">
+          <small class="error" id="counsellingDateError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="followUpDate">Follow-up Date</label>
+          <input type="date" id="followUpDate" name="followUpDate">
+          <small class="error" id="followUpDateError"></small>
+        </div>
+
+        <div class="form-actions form-group--full">
+          <button type="submit" id="submitButton">Submit Record</button>
+          <div class="loading" id="loadingIndicator" aria-live="polite">Submitting data...</div>
+        </div>
+      </form>
+
+      <div class="message" id="formMessage" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
