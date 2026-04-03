@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Records Dashboard | Student Counselling Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero hero--compact">
+    <div class="hero__content">
+      <div class="hero__brand">
+        <img src="logo.png" alt="Bal Vidya Mandir logo" class="hero__logo hero__logo--small">
+      </div>
+      <p class="hero__tag">Bal Vidya Mandir</p>
+      <h1>Counsellor Records Dashboard</h1>
+      <p class="hero__text">
+        Secure access for counsellors to review records, search by class, track follow-ups, and export data.
+      </p>
+      <div class="hero__actions">
+        <a href="index.html" class="button-link button-link--secondary">Back to Form</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="loginCard">
+      <div class="section-heading">
+        <h2>Counsellor Login</h2>
+        <p>Only authorised counsellors can access the dashboard.</p>
+      </div>
+
+      <form id="loginForm" class="form-grid" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password">
+        </div>
+
+        <div class="form-actions form-group--full">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+
+      <div class="message info" id="loginHint">
+        Use the counsellor username and password configured in Google Apps Script script properties.
+      </div>
+      <div class="message" id="loginMessage" aria-live="polite"></div>
+    </section>
+
+    <section class="dashboard" id="dashboardSection" hidden>
+      <div class="dashboard__header">
+        <div>
+          <h2>Records Overview</h2>
+          <p>Track counselling activity and upcoming follow-ups.</p>
+        </div>
+        <div class="dashboard__actions">
+          <button type="button" id="exportButton">Export to Excel</button>
+          <button type="button" id="logoutButton" class="button-light">Logout</button>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-card__label">Total Students Counselled</span>
+          <strong class="stat-card__value" id="totalStudents">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-card__label">Upcoming Follow-ups</span>
+          <strong class="stat-card__value" id="upcomingCount">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-card__label">Overdue Follow-ups</span>
+          <strong class="stat-card__value" id="overdueCount">0</strong>
+        </article>
+      </div>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>Upcoming Follow-ups Reminder</h2>
+          <p>Shows overdue follow-ups and reminders due within the next 7 days.</p>
+        </div>
+
+        <div class="reminder-list" id="reminderList">
+          <p class="empty-state-block">Login to view reminders.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <h2>Search Records</h2>
+          <p>Enter a class name to display counselling records for that class.</p>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="searchClass" placeholder="Enter class name">
+          <button type="button" id="searchButton">Search</button>
+          <button type="button" id="viewAllButton" class="button-light">View All</button>
+        </div>
+
+        <div class="message" id="searchMessage" aria-live="polite"></div>
+
+        <div class="table-wrapper">
+          <table id="resultsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Section</th>
+                <th>Concern</th>
+                <th>Counselling Date</th>
+                <th>Follow-up Date</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody">
+              <tr>
+                <td colspan="6" class="empty-state">Login to load records.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
